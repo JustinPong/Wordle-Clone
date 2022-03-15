@@ -12,6 +12,26 @@ window.onload = function () {
     intialize();
 }
 
+function update() {
+    let correct = 0;
+    for(let c = 0; c < width; c++) {
+        let currTile = document.getElementById(row.toString() + "-" + c.toString());
+        let letter = currTile.innerText;
+
+        if(word[c] === letter) {
+            currTile.classList.add("correct");
+            correct += 1;
+        } else if(word.includes(letter)) {
+            currTile.classList.add("present");
+        } else {
+            currTile.classList.add("absent");
+        }
+        if(correct === width) {
+            gameOver = true;
+        }
+    }
+}
+
 function intialize() {
     for (let r = 0; r < height; r++) {
         for (let c = 0; c < width; c++) {
@@ -55,22 +75,3 @@ function intialize() {
     })
 }
 
-function update() {
-    let correct = 0;
-    for(let c = 0; c < width; c++) {
-        let currTile = document.getElementById(row.toString() + "-" + c.toString());
-        let letter = currTile.innerText;
-
-        if(word[c] === letter) {
-            currTile.classList.add("correct");
-            correct += 1;
-        } else if(word.includes(letter)) {
-            currTile.classList.add("present");
-        } else {
-            currTile.classList.add("absent");
-        }
-        if(correct === width) {
-            gameOver = true;
-        }
-    }
-}
