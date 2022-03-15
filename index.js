@@ -6,7 +6,7 @@ let row = 0;
 let col = 0;
 
 let gameOver = false;
-let word = "SQUID";
+let word = "KNIFE";
 
 window.onload = function () {
     intialize();
