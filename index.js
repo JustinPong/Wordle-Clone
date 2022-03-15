@@ -12,7 +12,7 @@ window.onload = function () {
     intialize();
 }
 
-function update() {
+const update = () => {
     let correct = 0;
     for(let c = 0; c < width; c++) {
         let currTile = document.getElementById(row.toString() + "-" + c.toString());
@@ -32,7 +32,7 @@ function update() {
     }
 }
 
-function intialize() {
+const intialize = () => {
     for (let r = 0; r < height; r++) {
         for (let c = 0; c < width; c++) {
             let tile = document.createElement("span");
