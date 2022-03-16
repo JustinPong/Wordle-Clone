@@ -5,52 +5,10 @@ let row = 0;
 let col = 0;
 
 let gameOver = false;
-let word = "GLOCK";
+let word = "RIFLE";
 
 window.onload = function () {
     intialize();
-}
-
-const update = () => {
-    let correct = 0;
-    let letterCount = {};
-    for (let i = 0; i < word.length; i++) {
-        letter = word[i]
-        if (letterCount[letter]) {
-            letterCount[letter] += 1;
-        } else {
-            letterCount[letter] = 1;
-        }
-    }
-
-    for (let c = 0; c < width; c++) {
-        let currTile = document.getElementById(row.toString() + "-" + c.toString());
-        let letter = currTile.innerText;
-
-        if (word[c] === letter) {
-            currTile.classList.add("correct");
-            correct += 1;
-            letterCount[letter] -= 1;
-        }
-
-        if (correct === width) {
-            gameOver = true;
-        }
-    }
-
-    for (let c = 0; c < width; c++) {
-        let currTile = document.getElementById(row.toString() + "-" + c.toString());
-        let letter = currTile.innerText;
-
-        if (!currTile.classList.contains("correct")) {
-            if (word.includes(letter) && letterCount[letter] > 0) {
-                currTile.classList.add("present");
-                letterCount[letter] -= 1;
-            } else {
-                currTile.classList.add("absent");
-            }
-        }
-    }
 }
 
 const intialize = () => {
@@ -96,3 +54,46 @@ const intialize = () => {
     })
 }
 
+const update = () => {
+    let correct = 0;
+    let letterCount = {};
+
+    for (let i = 0; i < word.length; i++) {
+        letter = word[i]
+
+        if (letterCount[letter]) {
+            letterCount[letter] += 1;
+        } else {
+            letterCount[letter] = 1;
+        }
+    }
+
+    for (let c = 0; c < width; c++) {
+        let currTile = document.getElementById(row.toString() + "-" + c.toString());
+        let letter = currTile.innerText;
+
+        if (word[c] === letter) {
+            currTile.classList.add("correct");
+            correct += 1;
+            letterCount[letter] -= 1;
+        }
+
+        if (correct === width) {
+            gameOver = true;
+        }
+    }
+
+    for (let c = 0; c < width; c++) {
+        let currTile = document.getElementById(row.toString() + "-" + c.toString());
+        let letter = currTile.innerText;
+
+        if (!currTile.classList.contains("correct")) {
+            if (word.includes(letter) && letterCount[letter] > 0) {
+                currTile.classList.add("present");
+                letterCount[letter] -= 1;
+            } else {
+                currTile.classList.add("absent");
+            }
+        }
+    }
+}
