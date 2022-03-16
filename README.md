@@ -1,1 +1,2 @@
-# Wordle-Clone in HTML CSS JS
+# Wordle-Clone
+building a famous word game "Wordle" in HTML CSS JS
