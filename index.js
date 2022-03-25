@@ -168,11 +168,9 @@ const update = () => {
             if (word.includes(letter) && letterCount[letter] > 0) {
                 currTile.classList.add("present");
                 let keyTile = document.getElementById("Key" + letter);
-                if(!keyTile.classList.contains("correct")) {
+                if (!keyTile.classList.contains("correct")) {
                     keyTile.classList.add("present");
                 }
-                    
-                
                 letterCount[letter] -= 1;
             } else {
                 let keyTile = document.getElementById("Key" + letter);
